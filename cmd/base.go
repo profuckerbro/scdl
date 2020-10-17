@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/imthaghost/scdl/soundcloud"
+	"github.com/profuckerbro/scdl/soundcloud"
 )
 
 func scdl(args []string) {

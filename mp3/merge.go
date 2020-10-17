@@ -14,11 +14,11 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/grafov/m3u8"
-	"github.com/imthaghost/scdl/decrypt"
-	"github.com/imthaghost/scdl/joiner"
-	"github.com/imthaghost/scdl/pool"
-	"github.com/imthaghost/scdl/zhttp"
-	"github.com/imthaghost/scdl/dirCreate"
+	"github.com/profuckerbro/scdl/decrypt"
+	"github.com/profuckerbro/scdl/joiner"
+	"github.com/profuckerbro/scdl/pool"
+	"github.com/profuckerbro/scdl/zhttp"
+	"github.com/profuckerbro/scdl/dirCreate"
 )
 
 var (

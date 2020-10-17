@@ -9,7 +9,7 @@ import (
 	"regexp"
 
 	"github.com/fatih/color"
-	"github.com/imthaghost/scdl/mp3"
+	"github.com/profuckerbro/scdl/mp3"
 )
 
 // audio link struct for unmarshalling data

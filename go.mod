@@ -1,4 +1,4 @@
-module github.com/imthaghost/scdl
+module github.com/profuckerbro/scdl
 
 go 1.14
 

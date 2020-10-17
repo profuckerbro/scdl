@@ -1,6 +1,6 @@
 package main
 
-import "github.com/imthaghost/scdl/api"
+import "github.com/profuckerbro/scdl/api"
 
 func main() {
 	api.RunServ()

@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/imthaghost/scdl/cmd"
+	"github.com/profuckerbro/scdl/cmd"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {

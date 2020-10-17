@@ -62,8 +62,8 @@ changelog:
 # Seperate repo that you need to create before you deploy.
 brews:
   - github:
-        owner: imthaghost
+        owner: profuckerbro
         name: homebrew-scdl
     folder: Formula
-    homepage: https://github.com/imthaghost/scdl
+    homepage: https://github.com/profuckerbro/scdl
     description: SoundCloud Music Downloader | Scdl is the fastest SoundCloud music downloading CLI tool. Scdl utilizes go routine pools which allows you to download any song from SoundCloud within seconds. There are extended features such as recursively downloading all songs from a given artist and grabbing song artwork.

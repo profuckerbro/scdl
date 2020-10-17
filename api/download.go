@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"encoding/json"
-	"github.com/imthaghost/scdl/soundcloud"
+	"github.com/profuckerbro/scdl/soundcloud"
 
 //	"github.com/gorilla/mux"
 )
