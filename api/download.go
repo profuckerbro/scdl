@@ -1,6 +1,7 @@
 package api
 
 import (
+	"strconv"
 	"fmt"
 	"net/http"
 	"encoding/json"
@@ -23,9 +24,10 @@ func downloadHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(t.Url)
 	scdlDownload(t.Url)
 
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(`{"message": "DOWNLOAD ROUTE"}`))
+	w.Header().Set("Content-Disposition", "attachment; filename="+strconv.Quote(soundcloud.Filepath(t.Url)))
+	w.Header().Set("Content-Type", "application/octet-stream")
+	http.ServeFile(w, r, soundcloud.Filepath(t.Url))
+	
 
 }
 
