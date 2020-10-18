@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 
@@ -13,7 +14,8 @@ func RunServ() {
 	r := mux.NewRouter().StrictSlash(true)
 	r.HandleFunc("/", homeHandler)
 	r.HandleFunc("/download", downloadHandler)
-	log.Fatal(http.ListenAndServe(":8080", r))
+	handler := cors.Default().Handler(r)
+	log.Fatal(http.ListenAndServe(":8080", handler))
 
 }
 

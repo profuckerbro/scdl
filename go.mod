@@ -8,6 +8,7 @@ require (
 	github.com/fatih/color v1.9.0
 	github.com/gorilla/mux v1.8.0
 	github.com/grafov/m3u8 v0.11.1
+	github.com/rs/cors v1.7.0
 	github.com/spf13/cobra v1.0.0
 	github.com/torden/go-strutil v0.1.5
 	golang.org/x/net v0.0.0-20200421231249-e086a090c8fd // indirect
