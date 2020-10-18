@@ -24,7 +24,7 @@ func downloadHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(t.Url)
 	scdlDownload(t.Url)
 	w.Header().Add("Content-Disposition", "Attachment")
-	w.Header().Set("Content-Type", r.Header.Get("Content-Type"))
+	w.Header().Set("Content-Type", "audio/mpeg3")
 	fmt.Println(soundcloud.Filepath(t.Url))
 	http.ServeFile(w, r, soundcloud.Filepath(t.Url))
 	
