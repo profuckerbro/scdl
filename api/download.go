@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"github.com/profuckerbro/scdl/soundcloud"
 	"strconv"
+	"net/url"
 
 //	"github.com/gorilla/mux"
 )
@@ -25,11 +26,15 @@ func downloadHandler(w http.ResponseWriter, r *http.Request) {
 	var filename = soundcloud.Filename(t.Url) 
 
 
-	
-
+	u, err := url.ParseRequestURI(t.Url)
+if err != nil {
+   panic(err)
+}
+	fmt.Println("This is u")
+	fmt.Println(u)
 	scdlDownload(t.Url)
 
-	w.Header().Add("Content-Disposition", "Attachment; filename=" + filename)
+	w.Header().Add("Content-Disposition", "Attachment; filename=" + strconv.Quote(filename))
 	w.Header().Set("Content-Type", "application/octet-stream")
 
 	fmt.Println(soundcloud.Filepath(t.Url))
