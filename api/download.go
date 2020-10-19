@@ -22,14 +22,16 @@ func downloadHandler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusBadRequest)
         return
 	}
-	var filepath = soundcloud.Filepath(t.Url)
-	var filename = soundcloud.Filename(t.Url) 
+	
+	var filepath = soundcloud.Filepath(Validator(t.Url))
+	var filename = soundcloud.Filename(Validator(t.Url)) 
 
 
 	u, err := url.ParseRequestURI(t.Url)
 if err != nil {
    panic(err)
 }
+
 	fmt.Println("This is u")
 	fmt.Println(u)
 	scdlDownload(t.Url)
@@ -37,7 +39,6 @@ if err != nil {
 	w.Header().Add("Content-Disposition", "Attachment; filename=" + strconv.Quote(filename))
 	w.Header().Set("Content-Type", "application/octet-stream")
 
-	fmt.Println(soundcloud.Filepath(t.Url))
 	http.ServeFile(w, r, filepath)
 	
 
