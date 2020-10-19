@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"github.com/profuckerbro/scdl/soundcloud"
+	"strconv"
 
 //	"github.com/gorilla/mux"
 )
@@ -15,18 +16,24 @@ type Track struct {
 func downloadHandler(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	var t Track
-	//vars := mux.Vars(r)
 	err := json.NewDecoder(r.Body).Decode(&t)
 	if err != nil {
         http.Error(w, err.Error(), http.StatusBadRequest)
         return
 	}
-	fmt.Println(t.Url)
+	var filepath = soundcloud.Filepath(t.Url)
+	var filename = soundcloud.Filename(t.Url) 
+
+
+	
+
 	scdlDownload(t.Url)
-	w.Header().Add("Content-Disposition", "Attachment")
-	w.Header().Set("Content-Type", "audio/mpeg3")
+
+	w.Header().Add("Content-Disposition", "Attachment; filename=" + filename)
+	w.Header().Set("Content-Type", "application/octet-stream")
+
 	fmt.Println(soundcloud.Filepath(t.Url))
-	http.ServeFile(w, r, soundcloud.Filepath(t.Url))
+	http.ServeFile(w, r, filepath)
 	
 
 }
@@ -38,8 +45,11 @@ func scdlDownload(url string) {
 }
 
 func enableCors(w *http.ResponseWriter) {
+	allowedHeaders := "Accept, Content-Type, Content-Length, Content-Disposition, Accept-Encoding, Authorization,X-CSRF-Token"
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 	(*w).Header().Set("Access-Control-Allow-Credentials", "true")
 	(*w).Header().Set("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, PUT, OPTIONS")
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	(*w).Header().Set("Access-Control-Allow-Headers", allowedHeaders)
+	(*w).Header().Set("Access-Control-Expose-Headers", "Content-Disposition")
 }
