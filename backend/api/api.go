@@ -16,6 +16,7 @@ func RunServ() {
 
 	r := mux.NewRouter().StrictSlash(true)
 	r.Handle("/download",RateLimitMiddleware(http.HandlerFunc(downloadHandler)))
+	r.Handle("/metadata",RateLimitMiddleware(http.HandlerFunc(metadataHandler)))
 	handler := cors.Default().Handler(r)
 	log.Fatal(http.ListenAndServe(":8080", handler))
 
