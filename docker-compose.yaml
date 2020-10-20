@@ -1,0 +1,15 @@
+version: "3"
+services: 
+  scdlbackend: 
+    build: backend/.
+    ports: 
+      - "8080:8080"
+    command: scdl
+    restart: always
+  scdlfrontend:
+    tty: true  
+    build: frontend/.
+    ports: 
+      - "3000:3000"
+    command: npm start
+    restart: always
