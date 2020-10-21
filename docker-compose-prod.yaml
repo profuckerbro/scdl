@@ -1,0 +1,17 @@
+version: "3"
+services: 
+  scdlbackend: 
+    build: backend/.
+    ports: 
+      - "8080:8080"
+    command: scdl
+    restart: always
+  scdlfrontend:
+    tty: true  
+    build: 
+      context: frontend/.
+      dockerfile: DockerfileNginx
+    ports: 
+      - "80:80"  
+    command: nginx 
+    restart: always

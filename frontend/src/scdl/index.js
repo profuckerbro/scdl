@@ -65,7 +65,6 @@ class ScdlDownload extends React.Component {
         <form noValidate autoComplete="off" className={this.props.passName} onSubmit={() => this.PostRequest(this.state.url)} >
           <TextField id="outlined-basic" label="Soundcloud URL" variant="outlined" onChange={this.handleChange} />
           <Button onClick={() => this.PostRequest(this.state.url)} >Download</Button>
-          <Button  >ChangePIC</Button>
         </form>
 
       </div>
